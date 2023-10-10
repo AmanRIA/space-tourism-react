@@ -10,20 +10,19 @@ function Technology() {
   useEffect(() => {
     fetch("http://demo7999527.mockable.io/space-tourism-data")
       .then((Response) => Response.json())
-      .then((Response) => setTechData(Response.technology))
+      .then((Response) => {
+        setTechData(Response.technology);
+        setSelectedTech(Response.technology[0].name);
+      })
       .catch((Response) => console.log("error fetching the data"));
   }, []);
 
   useEffect(() => {
     if (techData.length > 0) {
-      setSelectedTech(techData[0].name);
     }
   }, [techData]);
 
-  const handleTechClick = (TechName) => {
-    setSelectedTech(TechName);
-    // console.log(selectedCrew);
-  };
+ 
 
   const selectedTechData = techData.find((tech) => tech.name === selectedTech);
 
@@ -51,24 +50,20 @@ function Technology() {
             )}
             {selectedTechData && (
               <figure className="figure-tech">
-                <img
-                  id="Tech-img"
-                  src={selectedTechData.images.portrait}
-                />
+                <img id="Tech-img" src={selectedTechData.images.portrait} />
               </figure>
-            )} <div className="verticle-pagination">
-            {techData.map((tech=>(
-             <div
-             className={`dots ${
-               selectedTech === tech.name ? "selected-dot" : ""
-             }`}
-             onClick={() => handleTechClick(tech.name)}
-           >
-                <h1 className="dot-number">{}</h1>
-              </div>
-
-            )))}
-        
+            )}{" "}
+            <div className="verticle-pagination">
+              {techData.map((tech) => (
+                <div
+                  className={`dots ${
+                    selectedTech === tech.name ? "selected-dot" : ""
+                  }`}
+                  onClick={() => setSelectedTech(tech.name)}
+                >
+                  <h1 className="dot-number">{}</h1>
+                </div>
+              ))}
             </div>
           </React.Fragment>
         )}
