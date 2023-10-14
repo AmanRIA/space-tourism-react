@@ -17,11 +17,7 @@ function Technology() {
       .catch((Response) => console.log("error fetching the data"));
   }, []);
 
-  useEffect(() => {
-    if (techData.length > 0) {
-    }
-  }, [techData]);
-
+  
  
 
   const selectedTechData = techData.find((tech) => tech.name === selectedTech);
@@ -54,14 +50,14 @@ function Technology() {
               </figure>
             )}{" "}
             <div className="verticle-pagination">
-              {techData.map((tech) => (
+              {techData.map((tech,index) => (
                 <div
                   className={`dots ${
                     selectedTech === tech.name ? "selected-dot" : ""
                   }`}
                   onClick={() => setSelectedTech(tech.name)}
                 >
-                  <h1 className="dot-number">{}</h1>
+                  <h1  className="dot-number">{index+1}</h1>
                 </div>
               ))}
             </div>

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../Styles/Style.css";
 import "../Styles/Queries.css";
 // import { IonIcon } from '@ionic/react';
 // import { logoIonic } from 'ionicons/icons';
 
 function NavBar() {
-  const [selectedNav, setSelectedNav] = useState(null); 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  
+  const location = useLocation();
+
   const toggleNavbar = () => {
-    setIsNavbarOpen(!isNavbarOpen); 
+    setIsNavbarOpen(!isNavbarOpen);
   };
 
   const handleNavClick = (item) => {
@@ -18,6 +18,12 @@ function NavBar() {
   };
 
   const NavItems = [`HOME`, `DESTINATION`, `CREW`, `TECHNOLOGY`];
+
+  useEffect(() => {
+    const path = location.pathname.toLowerCase().replace("/", "");
+    setSelectedNav(path || "home"); 
+  }, [location]);
+  const [selectedNav, setSelectedNav] = useState(location.pathname.toLowerCase().replace("/", "") || "home");
 
   return (
     <header className={`header ${isNavbarOpen ? "nav-open" : ""}`}>
@@ -27,18 +33,18 @@ function NavBar() {
       <div className="line"></div>
       <nav className="navbox">
         <ul className="main-nav-list">
-          {NavItems.map((item) => (
+          {NavItems.map((item, index) => (
             <li key={item}>
               <Link
                 className={`main-nav-link ${
-                  selectedNav === item ? "active-nav" : ""
+                  selectedNav === item.toLowerCase()? "active-nav" : ""
                 }`}
                 to={`/${
                   item.toLowerCase() === "home" ? "" : item.toLowerCase()
                 }`}
                 onClick={() => handleNavClick(item)}
               >
-                <strong>00</strong> {item}
+                <strong>{`0${index}`}</strong> {item}
               </Link>
             </li>
           ))}
@@ -46,11 +52,12 @@ function NavBar() {
       </nav>
       <button
         className={`btn-mobile-nav ${isNavbarOpen ? "close" : "open"}`}
-        onClick={toggleNavbar}>
+        onClick={toggleNavbar}
+      >
         {/* <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
         <ion-icon className="icon-mobile-nav" name="menu-outline"></ion-icon>
         <ion-icon className="icon-mobile-nav" name="close-outline"></ion-icon> */}
-       {isNavbarOpen ? (
+        {isNavbarOpen ? (
           <div className="close"></div>
         ) : (
           <div className="menu"></div>

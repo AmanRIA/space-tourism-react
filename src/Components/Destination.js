@@ -42,10 +42,11 @@ function Destination() {
         {isLoading ? (
           <Loader />
         ) : (
-          <React.Fragment>
+          <>
             {destData === null ? (
               <p>No data Found</p>
             ) : destData.length === 0 ? (
+
               <p>No data found</p>
             ) : (
               <>
@@ -114,7 +115,7 @@ function Destination() {
                 </div>
               </>
             )}
-          </React.Fragment>
+          </>
         )}
       </section>
     </main>
