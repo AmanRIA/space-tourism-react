@@ -29,17 +29,17 @@ function Crew() {
         ) : (
           <React.Fragment>
             <div className="heading">
-              {" "}
+              
               <span className="head head-5">
                 <span className="number">02</span>MEET YOUR CREW
               </span>
             </div>
             {selectedCrewData && (
               <div className="content-crew">
-                <h1 id="role" className="head head-5">
-                  {selectedCrewData.role}
+                <h1 id="role" className="head head-4">
+                  {selectedCrewData.role.toUpperCase()}
                 </h1>
-                <h2 className="head head-4">{selectedCrewData.name}</h2>
+                <h2 className="head head-3">{selectedCrewData.name.toUpperCase()}</h2>
                 <p className="typography">{selectedCrewData.bio}</p>
               </div>
             )}

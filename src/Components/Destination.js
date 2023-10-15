@@ -81,7 +81,7 @@ function Destination() {
                               setSelectedDestination(destination.name)
                             }
                           >
-                            {destination.name}
+                            {destination.name.toUpperCase()}
                           </a>
                         </li>
                       ))}
@@ -89,8 +89,8 @@ function Destination() {
                   </div>
                   {selectedDestinationData && (
                     <div>
-                      <h1 className="head head-1">
-                        {selectedDestinationData.name}
+                      <h1 className="head head-2">
+                        {selectedDestinationData.name.toUpperCase()}
                       </h1>
                       <p className="typography">
                         {selectedDestinationData.description}

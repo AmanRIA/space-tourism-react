@@ -18,11 +18,9 @@ function Home() {
           </p>
         </div>
 
-        <Link to="/destination">
-          {/* <div className="button-container"> */}
+        <Link to="/destination" className="link-button">
           <div className="circle"></div>
           <button className="btn">EXPLORE</button>
-          {/* </div> */}
         </Link>
       </section>
     </main>

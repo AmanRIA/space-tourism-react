@@ -37,10 +37,10 @@ function Technology() {
             </div>
             {selectedTechData && (
               <div className="content-tech">
-                <h1 id="" className="head head-5">
+                <h1 id="" className="head ">
                   THE TERMINOLOGY....
                 </h1>
-                <h2 className="head head-4">{selectedTechData.name}</h2>
+                <h2 className="head head-3">{selectedTechData.name.toUpperCase()}</h2>
                 <p className="typography">{selectedTechData.description}</p>
               </div>
             )}

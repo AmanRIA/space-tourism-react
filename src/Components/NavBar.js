@@ -55,12 +55,12 @@ function NavBar() {
         onClick={toggleNavbar}
       >
         {/* <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-        <ion-icon className="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon className="icon-mobile-nav" name="close-outline"></ion-icon> */}
+       
+         */}
         {isNavbarOpen ? (
-          <div className="close"></div>
+         <ion-icon className="iconm" size="large" name="close-outline"></ion-icon>
         ) : (
-          <div className="menu"></div>
+           <ion-icon className="iconm" size="large" name="menu-outline"></ion-icon>
         )}
       </button>
     </header>
